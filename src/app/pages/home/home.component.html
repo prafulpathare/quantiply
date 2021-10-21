@@ -1,0 +1,23 @@
+<div id="loading-cover" *ngIf="isLoading">
+    <img src="https://miro.medium.com/max/1400/1*CsJ05WEGfunYMLGfsT2sXA.gif" style="width: 200px;" alt="" srcset="">
+</div>
+
+<div  >
+
+    <mat-form-field>
+        <input matInput [matDatepicker]="datepicker" required (dateChange)="dateChanged($event)" />
+        <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker></mat-datepicker>
+    </mat-form-field>
+</div>
+
+<div>
+    <div>{{data.title}}</div>
+    <h2>{{selectedDate}}</h2>
+    <div>
+        <img *ngIf="data.media_type == 'image'" [src]="data.url" alt="" style="max-width: 300px;" />
+        <youtube-player *ngIf="data.media_type != 'image'" [videoId]="data.url" suggestedQuality="highres"   >
+        </youtube-player>
+
+    </div>
+</div>
